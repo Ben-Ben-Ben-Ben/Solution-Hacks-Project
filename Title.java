@@ -2,7 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Title extends JPanel {
-    public static void main(String[] args) {
+    public Title() {
 
         // Create a JFrame instance
         JFrame frame = new JFrame("Garbage Game");
@@ -15,16 +15,8 @@ public class Title extends JPanel {
 
         this.setBackground(Color.BLACK);
         frame.add(this);
+    }
 
-        frame.pack();
-        frame.setLayout(null);
-        frame.setVisible(true);
-
-
-
-
-
-//endregion
 
     }
 }
