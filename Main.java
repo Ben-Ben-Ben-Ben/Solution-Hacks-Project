@@ -5,6 +5,8 @@ public class Main {
 
         //Create title card
         Title title = new Title();
+
+        Game game = new Game();
     }
     
 }
