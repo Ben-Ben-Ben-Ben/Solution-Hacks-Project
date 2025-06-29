@@ -55,7 +55,6 @@ public class Title extends JPanel{
             // Action to start the game
             System.out.println("Game Started");
             Game game = new Game();
-            //game.animate();
             frame.dispose(); // Close the title screen
         });
         this.add(startButton);
