@@ -1,10 +1,6 @@
-
-public class Main {
-
+public class Runner {
     public static void main(String[] args) {
-
-        //Create title card
+        //Game game = new Game();
         Title title = new Title();
     }
-    
 }
