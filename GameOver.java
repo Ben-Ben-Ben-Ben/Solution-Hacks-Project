@@ -39,7 +39,7 @@ public class GameOver extends JPanel {
 
         // descriptions
         JTextPane description = new JTextPane();
-        description.setText("You made " + mistakes.size() + " mistakes!\n\n" +
+        description.setText("You made " + totalMistakes + " mistakes!\n\n" +
                 "Click through to learn about which items go in which bin.");
         description.setFont(new Font("Arial", Font.PLAIN, 18));
         description.setEditable(false); // Make the text area non-editable
@@ -53,15 +53,15 @@ public class GameOver extends JPanel {
         // Advance button
         JButton startButton = new JButton("Next");
         startButton.setFont(new Font("Arial", Font.PLAIN, 18));
-        startButton.setBounds((frame.getWidth()-250) / 2, 150, 200, 50);
+        startButton.setBounds((frame.getWidth()-250) / 2, 150, 250, 50);
         startButton.addActionListener(e -> {
             count++;
 
-            if (count < mistakes.size()) {
+            if (count < tracked.size()) {
                 startButton.setText("Next");
-            } else if (count == mistakes.size()){
+            } else if (count == tracked.size()){
                 startButton.setText("Return To Title Screen");
-            } else if (count > mistakes.size()) {
+            } else if (count > tracked.size()) {
                 startButton.setText("Returning to Title Screen...");
                 frame.dispose(); // Close the game over screen
                 Title title = new Title(); // Return to the title screen
@@ -69,7 +69,7 @@ public class GameOver extends JPanel {
             }
 
 
-            description.setText(mistakes.get(count-1).Name + "\n\n" + mistakes.get(count-1).GameOverTip);
+            description.setText(tracked.get(count-1).Name + "\n\n" + tracked.get(count-1).GameOverTip);
 
         });
 

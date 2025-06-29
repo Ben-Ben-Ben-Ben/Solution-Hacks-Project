@@ -2,7 +2,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.*;
 
 public class Game extends JPanel {
@@ -34,7 +33,7 @@ public class Game extends JPanel {
         new GarbageItem("Mask", "Garbage", "mask-gen.png", "Masks should not be recycled. Surgical masks are also not made of organic material.");
         new GarbageItem("Plastic Bag", "Recycle", "plast-bag-recycle.png", "Plastic bags can and should be recycled!");
         new GarbageItem("Poop", "Organic", "poop-org.png", "Pet waste is organic!");
-        new GarbageItem("Straw", "Garbage", "straw-gen.png", "Straws are for the garbage! They are not recyclable because of the size and plastic they are made from. They are not made of any organic material either.");
+        new GarbageItem("Straw", "Garbage", "straw-gen.png", "Straws are for the garbage! They cannot be recycled or composted as they are made of small plastics.");
         new GarbageItem("Toilet Paper Core", "Recycle", "toilet core - recycle.png", "The core part of the toilet paper is recyclable! It is typically made of cardboard");
 
         chosen = GarbageItem.getRandom();
