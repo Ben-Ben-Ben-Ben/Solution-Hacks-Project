@@ -26,10 +26,8 @@ public class Title extends JPanel{
 
 
         //title
-        JLabel title = new JLabel();
-        title.setIcon(new ImageIcon("Illustrations/chips-org.png"));
-        title.setHorizontalAlignment(SwingConstants.CENTER);
-        title.setVerticalAlignment(SwingConstants.NORTH);
+        title = new JLabel();
+        title.setIcon(new ImageIcon("Illustrations/garbage-game [LOGO].png"));
         this.add(title);
 
         // descriptions
@@ -38,8 +36,9 @@ public class Title extends JPanel{
         description.setFont(new Font("Arial", Font.PLAIN, 18));
         description.setEditable(false); // Make the text area non-editable
         description.setOpaque(false); 
-        description.setForeground(Color.PINK);
-        description.setBounds((frame.getWidth()-500) / 2, 150, 500, 100);
+        description.setForeground(Color.BLACK);
+        description.setBounds((frame.getWidth()-500) / 2, 350, 500, 100);
+        description.setFocusable(false); // Prevent focus
 
         StyledDocument doc = description.getStyledDocument();
         SimpleAttributeSet center = new SimpleAttributeSet();
@@ -53,9 +52,7 @@ public class Title extends JPanel{
         startButton.setBounds((frame.getWidth()-250) / 2, 500, 250, 50);
         startButton.addActionListener(e -> {
             // Action to start the game
-            System.out.println("Game Started");
             Game game = new Game();
-            //game.animate();
             frame.dispose(); // Close the title screen
         });
         this.add(startButton);
@@ -70,8 +67,8 @@ public class Title extends JPanel{
         });
         this.add(exitButton);
 
-        ImageIcon robIcon = new ImageIcon("Illustrations/robot happy.png");
-        JLabel robot = new JLabel();
+        ImageIcon robIcon = new ImageIcon("Illustrations/cow.png");
+        robot = new JLabel();
         robot.setIcon(robIcon);
         this.add(robot);
         exitButton.setVisible(true);
@@ -87,6 +84,9 @@ public class Title extends JPanel{
         if (backgroundImage != null) {
             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
         }
+
+        title.setBounds(50, 0, 700, 300);
+        robot.setBounds(500, 300, 200, 650);
 
         this.repaint(); // Ensure the panel is repainted
 
