@@ -4,14 +4,15 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
-
 public class Title extends JPanel{
     private Image backgroundImage;
-    JLabel robot, title;
+    JLabel cow, title;
 
+    @SuppressWarnings("unused")
     public Title() {
         // Load background image
         backgroundImage = new ImageIcon("Illustrations/title-screen-wallp.png").getImage();
+        
         // Create a JFrame instance
         JFrame frame = new JFrame("Garbage Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -21,16 +22,12 @@ public class Title extends JPanel{
         frame.setLocationRelativeTo(null);
         this.setLayout(null);
 
-
-        // Custom JPanel for background
-
-
-        //title
+        // Title
         title = new JLabel();
         title.setIcon(new ImageIcon("Illustrations/garbage-game [LOGO].png"));
         this.add(title);
 
-        // descriptions
+        // Descriptions
         JTextPane description = new JTextPane();
         description.setText("This game educates about how to dispose of waste properly! In support of the United Nations' Responsible Consumption and Production Sustainable Development Goal.");
         description.setFont(new Font("Arial", Font.PLAIN, 18));
@@ -48,30 +45,35 @@ public class Title extends JPanel{
 
         // Start button
         JButton startButton = new JButton("Start Game");
-        startButton.setFont(new Font("Arial", Font.PLAIN, 18));
+        startButton.setFont(new Font("Arial", Font.BOLD, 20));
         startButton.setBounds((frame.getWidth()-250) / 2, 500, 250, 50);
         startButton.addActionListener(e -> {
             // Action to start the game
             Game game = new Game();
             frame.dispose(); // Close the title screen
         });
+        startButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        startButton.setForeground(Color.BLUE);
         this.add(startButton);
 
         //Exit Button
         JButton exitButton = new JButton("Exit");
-        exitButton.setFont(new Font("Arial", Font.PLAIN, 18));
+        exitButton.setFont(new Font("Arial", Font.BOLD, 18));
         exitButton.setBounds((frame.getWidth()-100) / 2, 600, 100, 50);
         exitButton.addActionListener(e -> {
             // Action to exit the game
             System.exit(0);
         });
+        exitButton.setForeground(Color.BLUE);
+        exitButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         this.add(exitButton);
 
-        ImageIcon robIcon = new ImageIcon("Illustrations/cow.png");
-        robot = new JLabel();
-        robot.setIcon(robIcon);
-        this.add(robot);
+        ImageIcon cowIcon = new ImageIcon("Illustrations/cow.png");
+        cow = new JLabel();
+        cow.setIcon(cowIcon);
+        this.add(cow);
         exitButton.setVisible(true);
+        this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         frame.setContentPane(this); // Set this panel as the content pane
         frame.setVisible(true);
     }
@@ -86,10 +88,8 @@ public class Title extends JPanel{
         }
 
         title.setBounds(50, 0, 700, 300);
-        robot.setBounds(500, 300, 200, 650);
+        cow.setBounds(500, 300, 200, 650);
 
         this.repaint(); // Ensure the panel is repainted
-
     }
-
 }

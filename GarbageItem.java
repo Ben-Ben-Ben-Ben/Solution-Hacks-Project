@@ -22,5 +22,4 @@ public class GarbageItem {
         int rand = new Random().nextInt(trashList.size());
         return trashList.get(rand);
     }
-
 }

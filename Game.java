@@ -7,13 +7,11 @@ import javax.swing.*;
 public class Game extends JPanel {
     private Image backgroundImage;
     private JFrame gameFrame;
-    private final int width = 700;
-    private final int height = 700;
+    private final int width = 700, height = 700;
     private int lifeCount = 3;
     GarbageItem chosen;
     ArrayList<GarbageItem> mistakes = new ArrayList<>();
 
-    //list of items for randomization
     JLabel nextTrash, score, robot, life1, life2, life3, recycleCan, organicCan, garbageCan, frame;
     JButton recycle, organic, garbage;
 
@@ -25,7 +23,7 @@ public class Game extends JPanel {
         gameFrame.setUndecorated(true);
         gameFrame.setLocationRelativeTo(null);
 
-        //trash list
+        // List of waste to sort into bins
         new GarbageItem("Chips", "Garbage", "chips-org.png","Chip bags are garbage! They are made of material that cannot be recycled or composted.");
         new GarbageItem("Diaper", "Organic", "diaper-org.png", "Diapers are organic! They contain organic matter and must be recycled.");
         new GarbageItem("Crumpled Paper", "Recycle", "crumpled-paper-recycle.png", "Paper is recyclable!");
@@ -123,9 +121,11 @@ public class Game extends JPanel {
         frame.setLocation(450, 0);
         robot.setLocation(430, 300);
         score.setLocation(350, 80);
+
         life1.setLocation(-50, -20);
         life2.setLocation(50, -20);
         life3.setLocation(150, -20);
+
         recycleCan.setLocation(0, 150);
         organicCan.setLocation(0, 325);
         garbageCan.setLocation(0, 500);
@@ -137,16 +137,19 @@ public class Game extends JPanel {
     }
 
     public class ButtonListener implements ActionListener {
+        @SuppressWarnings("unused")
         @Override
         public void actionPerformed(ActionEvent e) {
             JButton b = (JButton) e.getSource();
             if (b.getName().equals(nextTrash.getText())) {
                 int points = Integer.parseInt(score.getText())+10;
                 score.setText(Integer.toString(points));
+
                 GarbageItem chosen = GarbageItem.getRandom();
                 ImageIcon i =  new ImageIcon(chosen.Image);
                 nextTrash.setIcon(i);
                 nextTrash.setText(chosen.Type);
+
                 ImageIcon r =  new ImageIcon("Illustrations/robot happy.png");
                 Image imr = r.getImage().getScaledInstance(250, 400, java.awt.Image.SCALE_SMOOTH);
                 robot.setIcon(new ImageIcon(imr));
@@ -155,6 +158,7 @@ public class Game extends JPanel {
                 Image imr = r.getImage().getScaledInstance(250, 400, java.awt.Image.SCALE_SMOOTH);
                 robot.setIcon(new ImageIcon(imr));
                 mistakes.add(chosen);
+                
                 if (lifeCount == 3) {
                     life3.setEnabled(false); lifeCount--;
                 } else if (lifeCount == 2) {
